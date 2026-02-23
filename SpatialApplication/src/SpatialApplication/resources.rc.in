@@ -1,0 +1,26 @@
+#pragma code_page(65001)  // Forces UTF-8 interpretation
+
+IDI_ICON1 ICON DISCARDABLE "jplsa_app_icon.ico"
+
+1 VERSIONINFO
+FILEVERSION     @PROJECT_VERSION_MAJOR@,@PROJECT_VERSION_MINOR@,@PROJECT_VERSION_PATCH@,0
+PRODUCTVERSION  @PROJECT_VERSION_MAJOR@,@PROJECT_VERSION_MINOR@,@PROJECT_VERSION_PATCH@,0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName",      "Jaroslav Pevno"
+            VALUE "FileDescription",  "JPL Spatial Application"
+            VALUE "FileVersion",      "@PROJECT_VERSION@"
+            VALUE "InternalName",     "JPLSpatialApplication"
+            VALUE "LegalCopyright",   "© @CURRENT_YEAR@ Jaroslav Pevno"
+            VALUE "ProductName",      "@PROJECT_NAME@"
+            VALUE "ProductVersion",   "@PROJECT_VERSION@"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

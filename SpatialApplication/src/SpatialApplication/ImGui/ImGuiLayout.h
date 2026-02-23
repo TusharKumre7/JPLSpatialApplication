@@ -1,0 +1,162 @@
+//
+//      ██╗██████╗     ██╗     ██╗██████╗ ███████╗
+//      ██║██╔══██╗    ██║     ██║██╔══██╗██╔════╝		** JPL Spatial Application **
+//      ██║██████╔╝    ██║     ██║██████╔╝███████╗
+// ██   ██║██╔═══╝     ██║     ██║██╔══██╗╚════██║		https://github.com/Jaytheway/JPLSpatialApplication
+// ╚█████╔╝██║         ███████╗██║██████╔╝███████║
+//  ╚════╝ ╚═╝         ╚══════╝╚═╝╚═════╝ ╚══════╝
+//
+//   Copyright Jaroslav Pevno, JPL Spatial Application is offered under the terms of the ISC license:
+//
+//   Permission to use, copy, modify, and/or distribute this software for any purpose with or
+//   without fee is hereby granted, provided that the above copyright notice and this permission
+//   notice appear in all copies. THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+//   WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+//   AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
+//   CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+//   WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+//   CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+#pragma once
+
+#include "ImGui/ImGui.h"
+
+#include <concepts>
+
+namespace JPL::ImGuiEx
+{
+    template<class IDType>
+    concept CValidLayoutIDType =
+        std::same_as<IDType, const char*> ||
+        std::same_as <IDType, const void*> ||
+        std::same_as <IDType, int>;
+
+    template<class DrawFunction, CValidLayoutIDType IDType>
+    void LayoutHorizontal(IDType id, const DrawFunction& draw, const ImVec2& size = ImVec2(0, 0), float align = -1.0f)
+    {
+        ImGui::BeginHorizontal(id, size, align);
+        draw();
+        ImGui::EndHorizontal();
+    }
+
+    template<class DrawFunction, CValidLayoutIDType IDType>
+    void LayoutVertical(IDType id, const DrawFunction& draw, const ImVec2& size = ImVec2(0, 0), float align = -1.0f)
+    {
+        ImGui::BeginVertical(id, size, align);
+        draw();
+        ImGui::EndVertical();
+    }
+
+    template<class DrawFunction, CValidLayoutIDType IDType>
+    void LayoutHorizontal(IDType id, const ImVec2& size, float align, const DrawFunction& draw)
+    {
+        LayoutHorizontal(id, draw, size, align);
+    }
+
+    template<class DrawFunction, CValidLayoutIDType IDType>
+    void LayoutVertical(IDType id, const ImVec2& size, float align, const DrawFunction& draw)
+    {
+        LayoutVertical(id, draw, size, align);
+    }
+
+    template<class IDType>
+    concept CValidWindowIDType =
+        std::same_as<IDType, const char*> ||
+        std::same_as <IDType, ImGuiID>;
+
+    struct ChildConfig
+    {
+        ImVec2 Size{ 0.0f, 0.0f };
+        ImVec2 MinSize{ 0.0f, 0.0f };
+        ImVec2 MaxSize{ FLT_MAX, FLT_MAX };
+
+        inline bool ConstrainsSet() const noexcept
+        {
+            return MinSize.x != 0.0f
+                || MinSize.y != 0.0f
+                || MaxSize.x != FLT_MAX
+                || MaxSize.y != FLT_MAX;
+        }
+
+        ImGuiChildFlags ChildFlags = 0;
+        ImGuiWindowFlags WindowFlags = 0;
+    };
+
+    template<class DrawFunction, CValidWindowIDType IDType>
+    void Child(IDType id, const DrawFunction& draw, const ChildConfig& config = {})
+    {
+        if (config.ConstrainsSet())
+        {
+            ImGui::SetNextWindowSizeConstraints(config.MinSize, config.MaxSize);
+        }
+
+        if (ImGui::BeginChild(id, config.Size, config.ChildFlags, config.WindowFlags))
+        {
+            draw();
+        }
+        ImGui::EndChild();
+    }
+
+    template<class DrawFunction, CValidWindowIDType IDType>
+    void Child(IDType id, const ChildConfig& config, const DrawFunction& draw)
+    {
+        Child(id, draw, config);
+    }
+
+    struct WindowConfig
+    {
+        ImVec2 Size{ 0.0f, 0.0f };
+        ImGuiCond SizeCond = 0;
+
+        ImVec2 MinSize{ 0.0f, 0.0f };
+        ImVec2 MaxSize{ FLT_MAX, FLT_MAX };
+
+        inline bool SizeSet() const noexcept
+        {
+            return Size.x != 0.0f || Size.y != 0.0f;
+        }
+
+        inline bool ConstrainsSet() const noexcept
+        {
+            return MinSize.x != 0.0f
+                || MinSize.y != 0.0f
+                || MaxSize.x != FLT_MAX
+                || MaxSize.y != FLT_MAX;
+        }
+
+        ImGuiWindowFlags Flags = 0;
+        ImGuiDockNodeFlags DockFlags = 0;
+    };
+
+    template<class DrawFunction>
+    void Window(const char* name, const DrawFunction& draw, bool* p_open = NULL, const WindowConfig& config = {})
+    {
+        if (config.ConstrainsSet())
+        {
+            ImGui::SetNextWindowSizeConstraints(config.MinSize, config.MaxSize);
+        }
+
+        if (config.SizeSet())
+        {
+            ImGui::SetNextWindowSize(config.Size, config.SizeCond);
+        }
+
+        ImGuiWindowClass windowClass;
+        windowClass.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_AutoHideTabBar | config.DockFlags;
+
+        ImGui::SetNextWindowClass(&windowClass);
+
+        if (ImGui::Begin(name, p_open, config.Flags))
+        {
+            draw();
+        }
+        ImGui::End();
+    }
+
+    template<class DrawFunction>
+    void Window(const char* name, const WindowConfig& config, const DrawFunction& draw, bool* p_open = NULL)
+    {
+        Window(name, draw, p_open, config);
+    }
+
+} // namespace JPL::ImGuiEx

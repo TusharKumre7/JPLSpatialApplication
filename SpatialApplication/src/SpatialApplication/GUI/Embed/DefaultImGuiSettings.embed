@@ -1,0 +1,116 @@
+constexpr const char* gDefaultImGuiLayout = R"(
+[Window][DockSpaceWindow]
+Pos=0,0
+Size=1608,935
+Collapsed=0
+
+[Window][Debug##Default]
+Pos=60,60
+Size=400,400
+Collapsed=0
+
+[Window][Dear ImGui Demo]
+Pos=763,58
+Size=734,672
+Collapsed=0
+DockId=0x00000002,2
+
+[Window][Sound Sources]
+Pos=763,58
+Size=734,672
+Collapsed=0
+DockId=0x00000002,0
+
+[Window][Audio Player]
+Pos=763,732
+Size=734,202
+Collapsed=0
+DockId=0x00000003,0
+
+[Window][VBAP Vis]
+Pos=845,58
+Size=761,672
+Collapsed=0
+DockId=0x00000002,2
+
+[Window][RoomWindow]
+Pos=1,58
+Size=760,876
+Collapsed=0
+DockId=0x00000004,0
+
+[Window][Select Sources Folder##ChooseDirDlgKey]
+Pos=554,206
+Size=849,452
+Collapsed=0
+
+[Window][VBAP]
+Pos=763,58
+Size=734,672
+Collapsed=0
+DockId=0x00000002,1
+
+[Window][Dear ImGui Style Editor]
+Pos=162,55
+Size=508,788
+Collapsed=0
+
+[Window][Metering]
+Pos=1499,58
+Size=108,876
+Collapsed=0
+DockId=0x00000006,0
+
+[Table][0x782F1D3F,4]
+RefScale=17
+Column 0  Sort=0v
+
+[Table][0x51D6F5EA,3]
+Column 0  Weight=1.0000
+Column 1  Weight=1.0000
+Column 2  Weight=1.0000
+
+[Table][0xE102187A,3]
+RefScale=17
+Column 0  Width=57
+Column 1  Width=57
+Column 2  Width=57
+
+[Table][0xF1421304,3]
+RefScale=17
+Column 0  Width=58
+Column 1  Width=58
+Column 2  Weight=1.0000
+
+[Table][0xE212E0F0,6]
+RefScale=17
+Column 0  Width=58
+Column 1  Width=58
+Column 2  Width=-1
+Column 3  Weight=1.0000
+Column 4  Weight=1.0000
+Column 5  Weight=-1.0000
+
+[Table][0x3018DDAC,4]
+RefScale=17
+Column 0  Sort=0v
+
+[Table][0x603C335E,2]
+Column 0  Weight=1.0000
+Column 1  Weight=1.0000
+
+[Table][0xA6C6558A,2]
+Column 0  Weight=1.0000
+Column 1  Weight=1.0000
+
+[Docking][Data]
+DockSpace       ID=0xB0F8A8CA Window=0x7CF38D7C Pos=239,199 Size=1606,876 Split=X
+  DockNode      ID=0x00000005 Parent=0xB0F8A8CA SizeRef=1496,876 Split=X
+    DockNode    ID=0x00000004 Parent=0x00000005 SizeRef=760,876 CentralNode=1 HiddenTabBar=1 Selected=0x3FDD7DC4
+    DockNode    ID=0x00000001 Parent=0x00000005 SizeRef=734,876 Split=Y Selected=0x5A344898
+      DockNode  ID=0x00000002 Parent=0x00000001 SizeRef=550,672 Selected=0x39B00B7E
+      DockNode  ID=0x00000003 Parent=0x00000001 SizeRef=550,202 HiddenTabBar=1 Selected=0x4540E930
+  DockNode      ID=0x00000006 Parent=0xB0F8A8CA SizeRef=108,876 HiddenTabBar=1 Selected=0x16A19006
+
+
+)";

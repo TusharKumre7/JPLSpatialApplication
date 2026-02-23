@@ -1,0 +1,79 @@
+//
+//      ██╗██████╗     ██╗     ██╗██████╗ ███████╗
+//      ██║██╔══██╗    ██║     ██║██╔══██╗██╔════╝		** JPL Spatial Application **
+//      ██║██████╔╝    ██║     ██║██████╔╝███████╗
+// ██   ██║██╔═══╝     ██║     ██║██╔══██╗╚════██║		https://github.com/Jaytheway/JPLSpatialApplication
+// ╚█████╔╝██║         ███████╗██║██████╔╝███████║
+//  ╚════╝ ╚═╝         ╚══════╝╚═╝╚═════╝ ╚══════╝
+//
+//   Copyright Jaroslav Pevno, JPL Spatial Application is offered under the terms of the ISC license:
+//
+//   Permission to use, copy, modify, and/or distribute this software for any purpose with or
+//   without fee is hereby granted, provided that the above copyright notice and this permission
+//   notice appear in all copies. THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+//   WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+//   AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
+//   CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+//   WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+//   CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+#include "VBAPModel.h"
+
+#include <JPLSpatial/Math/Math.h>
+
+#include <algorithm>
+#include <cmath>
+
+namespace JPL
+{
+	VBAPModel::VBAPModel()
+	{
+		AddChangeListener<&VBAPModel::BroadcastChange>(
+			*this,
+			SourcePosition,
+			Spread,
+			Focus,
+			SourceSize,
+			SpreadFromSourceSize,
+			HeightSpread,
+			UseSourceOrientation);
+	}
+
+	static float GetElevationAngle(const JPL::MinimalVec3& direction)
+	{
+		// The Up axis is Y. In a normalized vector, the dot product 
+		// with (0, 1, 0) is simply direction.y
+		// We clamp to [-1, 1] to prevent NaN due to float inaccuracies
+		return std::asin(std::clamp(direction.Y, -1.0f, 1.0f));
+	}
+
+	float VBAPModel::ComputePanUpdateData(bool bWithHeightSpeakers, JPLPanUpdateData& outPanUpdateData)
+	{
+		const JPL::MinimalVec3 sourcePosition = SourcePosition.Get();
+
+		float distance;
+		const JPL::MinimalVec3 direction = sourcePosition.SafeNormal(distance, /* fallback direction */ JPL::MinimalVec3(0.0f, 0.0f, -1.0f));
+
+		float spread = SpreadFromSourceSize.Get()
+					? JPLPanner::GetSpreadFromSourceSize(SourceSize.Get(), distance)
+					: Spread.Get();
+
+		if (HeightSpread.Get())
+		{
+			const float heightSpread = GetElevationAngle(direction) * JPL_INV_HALF_PI;
+
+			// Apply height spread if we don't have height speakers,
+			// or if the source is "underneath"
+			if (not bWithHeightSpeakers || heightSpread < 0.0f)
+			{
+				spread = std::max(std::abs(heightSpread), spread);
+			}
+		}
+
+		outPanUpdateData.Direction = direction;
+		outPanUpdateData.Focus = Focus.Get();
+		outPanUpdateData.Spread = spread;
+
+		return distance;
+	}
+} //namespace JPL

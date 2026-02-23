@@ -1,0 +1,62 @@
+//
+//      ██╗██████╗     ██╗     ██╗██████╗ ███████╗
+//      ██║██╔══██╗    ██║     ██║██╔══██╗██╔════╝		** JPL Spatial Application **
+//      ██║██████╔╝    ██║     ██║██████╔╝███████╗
+// ██   ██║██╔═══╝     ██║     ██║██╔══██╗╚════██║		https://github.com/Jaytheway/JPLSpatial
+// ╚█████╔╝██║         ███████╗██║██████╔╝███████║
+//  ╚════╝ ╚═╝         ╚══════╝╚═╝╚═════╝ ╚══════╝
+//
+//   Copyright Jaroslav Pevno, JPL Spatial Application is offered under the terms of the ISC license:
+//
+//   Permission to use, copy, modify, and/or distribute this software for any purpose with or
+//   without fee is hereby granted, provided that the above copyright notice and this permission
+//   notice appear in all copies. THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+//   WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+//   AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
+//   CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+//   WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+//   CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+#pragma once
+
+#include "ImGui/ImGui.h"
+
+#include <filesystem>
+#include <vector>
+#include <future>
+
+namespace JPL::GUI
+{
+	class Waveform
+	{
+		struct ChannelData
+		{
+			std::vector<float> Min;
+			std::vector<float> Max;
+		};
+	public:
+		Waveform() = default;
+		~Waveform() = default;
+
+		void SetFile(const std::filesystem::path& file);
+		void Draw();
+
+	private:
+		static std::vector<ChannelData> GenerateMinMaxValues(const std::vector<float>& sampleData, uint64_t numFrames, int frameWidth);
+
+	private:
+		std::filesystem::path mSelectedFile;
+
+		ImColor mWaveformFillColour = JPL::GUI::Colours::Theme::Selected;
+		ImColor mWaveformLineColour = JPL::GUI::Colours::Theme::Selected;
+		float mLineThickness = 1.0f;
+
+		std::vector<ChannelData> mChannelData;
+		int mWaveformWidthPx = 0;
+
+		// Sample data must only be accessed from the waveform processing thread
+		std::vector<float> mSampleData;
+		std::future<std::vector<ChannelData>> mFutureChannelData;
+
+	};
+} // namespace JPL::GUI
