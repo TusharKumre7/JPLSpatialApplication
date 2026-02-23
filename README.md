@@ -75,5 +75,5 @@ The project is distributed under the [ISC license](https://github.com/Jaytheway
 ### Third-Party Assets
 - **JPL Spatial Application** uses [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans) font licensed under the [SIL Open Font License 1.1](licenses/OFL.txt).
   Copyright (c) 2017 IBM Corp. with Reserved Font Name "IBM Plex".
-- A few icons are used from [Font Awesome (free)](https://github.com/FortAwesome/Font-Awesome) under the [SIL Open Font License 1.1](li.censes/OFL.txt).
+- A few icons are used from [Font Awesome (free)](https://github.com/FortAwesome/Font-Awesome) under the [SIL Open Font License 1.1](licenses/OFL.txt).
   
