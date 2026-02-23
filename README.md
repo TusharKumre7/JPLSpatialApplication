@@ -65,12 +65,12 @@ The GUI is drawn using [Dear ImGui](https://github.com/ocornut/imgui) library wi
 - Uses C++20
 
 ## Dependencies
-- [JPL Spatial](https://github.com/Jaytheway/JPLSpatial/) - sound spatialization and propagaion - ISC license
-- [MiniaudioCpp](https://github.com/Jaytheway/JPLSpatial/) - routing and rendering audio to endpoint device - ISC license
-- [Walnut (CMake fork)](https://github.com/Jaytheway/WalnutCMake) - platfom window handling and some application utilities - MIT license
+- [JPL Spatial](https://github.com/Jaytheway/JPLSpatial/) - sound spatialization and propagaion - [ISC license](https://github.com/Jaytheway/JPLSpatial/blob/main/LICENSE)
+- [MiniaudioCpp](https://github.com/Jaytheway/JPLSpatial/) - routing and rendering audio to endpoint device - [ISC license](https://github.com/Jaytheway/MiniaudioCpp/blob/main/LICENSE)
+- [Walnut (CMake fork)](https://github.com/Jaytheway/WalnutCMake) - platfom window handling and some application utilities - [MIT license](https://github.com/Jaytheway/WalnutCMake/blob/master/LICENSE.txt)
 
 ## License
-The project is distributed under the [ISC license](https://github.com/Jaytheway/JPLSpatialApplication?tab=License-1-ov-file).
+The project is distributed under the [LICENSE](LICENSE).
 
 ### Third-Party Assets
 - **JPL Spatial Application** uses [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans) font licensed under the [SIL Open Font License 1.1](licenses/OFL.txt).
