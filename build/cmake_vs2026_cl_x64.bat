@@ -1,5 +1,5 @@
 @echo off
 pushd ..
-python Build/_build_util.py "Visual Studio 18 2026" "Build/VS2026_CL_x64" x64 -DBUILD_TESTING=OFF %*
+python build/_build_util.py "Visual Studio 18 2026" "build/VS2026_CL_x64" x64 -DBUILD_TESTING=OFF %*
 popd
 pause
