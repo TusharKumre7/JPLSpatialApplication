@@ -62,7 +62,7 @@ The GUI is drawn using [Dear ImGui](https://github.com/ocornut/imgui) library wi
 
 ## Building
 - To build the application, run appropriate build script in `build` folder, open generated Visual Studio solution and compile relevant configuration.
-- To directly build the executable in Distribution config, run `...build_distribution.bat`
+- To directly build the executable in Distribution config, run `...build_distribution.bat`. The executable is going to be in `[repo root]/bin/Distribution-windows-x64/JPLSpatialApplication/` folder. Note: only the contents of `JPLSpatialApplication` folder is needed to run the application, other build artifacts in `Distribution-windows-x64` can be ignored.
 - Uses C++20
 
 ## Dependencies
