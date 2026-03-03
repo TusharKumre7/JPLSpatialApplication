@@ -62,6 +62,7 @@ The GUI is drawn using [Dear ImGui](https://github.com/ocornut/imgui) library wi
 
 ## Building
 - To build the application, run appropriate build script in `build` folder, open generated Visual Studio solution and compile relevant configuration.
+- To directly build the executable in Distribution config, run `...build_distribution.bat`
 - Uses C++20
 
 ## Dependencies
